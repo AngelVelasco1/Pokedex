@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap');
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif!important;
+    font-family: 'Poppins', sans-serif;
 }
 
 html {
@@ -14,7 +13,7 @@ html {
 }
 
 body {
-    background: #F6F8FC;
+    background: #fff8f8;
     padding: 0 10vw;
     display: flex;
     justify-content: center;
@@ -27,6 +26,7 @@ body {
 h1, h2, h3, h4 {
     color: #011030;
     margin: 5px;
+    text-transform: capitalize;
     text-align: center;
 }
 
@@ -63,25 +63,18 @@ span {
 }
 
 .width-100 {
-    width: 100%;
+    width: 90%;
 }
 
 .container {
-    border-radius: 20px;
-    box-shadow: #EDEDED 0 10px 10px;
+    border-radius: 18px;
+    box-shadow: #e6e6e6 0 10px 12px;
     padding: 15px;
     background-color: white;
 }
 
-input {
-    border: none;
-    outline: none;
-    font-size: 18px;
-    flex: 1
-}
-
 .margin-5 {
-    margin: 5px;
+    margin: 10px;
 }
 
 .hide {
@@ -105,7 +98,7 @@ input {
 
 .loading-ball {
     height: 60px;
-    filter: brightness(80%);
+    filter: brightness(100%);
     animation: rotatePokeBall ease-in-out 3s infinite;
 }
 
@@ -116,32 +109,12 @@ input {
 
 /*List Container*/
 #pokedex-list {
-    margin-right: 350px;
+    margin-top: 80px;
+    margin-right: 380px;
     width: 100%;
 }
 
-/*Search*/
-#search-bar-container {
-    margin: 30px 10px;
-}
 
-#start-search-button {
-    background-color: #FF5350;
-    height: 40px;
-    width: 40px;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: #ff535088 5px 5px 15px;
-    color: white;
-    font-size: 18px;
-}
-
-#start-search-button:hover {
-    opacity: 0.8;
-    box-shadow: #ff53509c 3px 3px 13px;
-}
-
-/*Render search results*/
 #pokedex-list-render-container {
     display: flex;
     flex-flow: wrap row;
@@ -165,14 +138,14 @@ input {
 }
 
 .pokemon-render-result-container:hover .search-pokemon-image {
-    transform: scale(1.15);
+    transform: scale(1.2);
 }
 
 .search-pokemon-image {
     position: absolute;
     top: -55px;
     image-rendering: pixelated;
-    transition-duration: 100ms;
+    transition-duration: 300ms;
 }
 
 #loading-div {
@@ -183,7 +156,8 @@ input {
     align-items: center;
     justify-content: center;
     z-index: 99;
-    background-color: white; 
+    background-color: rgba(21, 21, 21, 0.995); 
+    border-radius: 0px 0px 12px 12px;
 }
 
 .hideLoading {
@@ -203,7 +177,7 @@ input {
     height: 80vh;
     position: fixed;
     right: calc(10vw - 20px);
-    padding: 0 15px;
+    padding: 0 20px;
     text-align: center;
     bottom: 0;
     margin-bottom: 0;
@@ -246,7 +220,7 @@ input {
 }
 
 .pokemon-info-variable-container{
-    width: 100%;
+    width: 90%;
     background-color: #F6F8FC;
     padding: 8px 0;
     border-radius: 30px;
@@ -342,7 +316,8 @@ input {
 }
 
 #back-to-top-button img {
-    height: 16px;
+    max-height: 30px;
+
 }
 
 
@@ -360,21 +335,21 @@ input {
 
 #current-pokemon-responsive-close {
     position: fixed;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     background-color: #F6F8FC;
     cursor: pointer;
     z-index: 2;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 8px;
     display: none ;
-    height: 22px;
-    transition: 0.35s;
+    height: 28px;
+    transition: 0.45s;
     cursor: pointer;
 }
 
 #current-pokemon-responsive-close:hover {
-    opacity: 0.5;
+    opacity: 0.65;
 }
 
 @media(max-width: 1100px) {
@@ -440,7 +415,5 @@ input {
         width: 90%;
     }
     
-    #search-bar-container {
-        margin: 40px 0;
-    }
+
 }

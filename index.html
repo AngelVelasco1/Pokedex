@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
-    <script src="./components/names.js" defer></script>
+    <script src="main.js" type="module" defer></script>
+    <script src="./components/data-API.js" defer></script>
     <script src="./components/pokemon-cards.js" defer></script>
     <script src="./components/pokemon-info.js" defer></script>
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 </head>
 
-<body onload="getAllNames()" class="row">
+<body  class="row">
+
     <div id="loading-div">
         <img src="./img/pokeball-icon.png" class="loading-ball">
     </div>
 
     <div id="pokedex-list" class="column">
-
-       
         <div id="pokedex-list-render-container">
+
         </div>
     </div>
-    
+
     <div id="current-pokemon-responsive-background" class="hide"></div>
-    <div id="current-pokemon-responsive-close" class="hide" onclick="closePokemonInfo()"><img src="./img/close-icon.png"></div>
+
+    <div id="current-pokemon-responsive-close" class="hide">
+        <img src="./img/close-icon.svg">
+    </div>
 
     <div id="current-pokemon-container" class="container column center">
-    
 
-        <img id="current-pokemon-image" src="./img/no-pokemon-selected-image.png">
+        <img id="current-pokemon-image" src="./img/no-pokemon-selected.png">
 
         <!--Info-->
         <div id="current-pokemon-info" class="hide">
             <!--Id-->
             <span id="current-pokemon-id" class="font-size-12 bold">#213</span>
-            
+
             <!--name-->
             <h2 id="current-pokemon-name">Pikachu</h2>
 
@@ -44,14 +46,14 @@
             <div id="current-pokemon-types" class="row center"></div>
 
             <!--description-->
-            <h4>Pokedex Entry</h4>
+            <h4>Description</h4>
             <span id="current-pokemon-description"></span>
 
             <!--height and weight-->
             <div class="row center">
                 <div class="width-100 column center margin-5">
                     <h4>Height</h4>
-                    <div  id="current-pokemon-height" class="pokemon-info-variable-container"></div>
+                    <div id="current-pokemon-height" class="pokemon-info-variable-container"></div>
                 </div>
                 <div class="width-100 column center margin-5">
                     <h4>Weight</h4>
@@ -63,7 +65,7 @@
             <div class="column">
                 <h4>Abilities</h4>
                 <div class="row">
-                    <div id="current-pokemon-abilitiy-0" class="pokemon-info-variable-container"></div>
+                    <div id="current-pokemon-abilitiy-0" class="pokemon-info-variable-container margin-5"></div>
                     <div id="current-pokemon-abilitiy-1" class="pokemon-info-variable-container"></div>
                 </div>
             </div>
@@ -72,7 +74,7 @@
             <h4>Stats</h4>
             <div class="row center">
                 <div class="current-pokemon-stats-container column">
-                    <div class="current-pokemon-stats-name" style="background: #DF2140">
+                    <div class="current-pokemon-stats-name" style="background: #ff395a">
                         HP
                     </div>
                     <h5 id="current-pokemon-stats-hp">84</h5>
@@ -96,7 +98,7 @@
                     <h5 id="current-pokemon-stats-speed">84</h5>
                 </div>
                 <div class="current-pokemon-stats-container column">
-                    <div class="current-pokemon-stats-name" style="background: #85DDFF">
+                    <div class="current-pokemon-stats-name" style="background: #d685ff">
                         SpA
                     </div>
                     <h5 id="current-pokemon-stats-spa">84</h5>
@@ -107,33 +109,36 @@
                     </div>
                     <h5 id="current-pokemon-stats-spd">84</h5>
                 </div>
-              
-              
+
+
             </div>
 
             <!--Evolution chain-->
             <div id="current-pokemon-evolution-chain-container">
                 <h4>Evolution</h4>
                 <div class="row center">
-                    <img id="current-pokemon-evolution-0" class="current-pokemon-evolution-image" src="././img/pokeball-icon.png">
-                    <div id="current-pokemon-evolution-level-0" class="current-pokemon-evolution-level-container font-size-12 bold">Lv. 16</div>
-                    <img id="current-pokemon-evolution-1" class="current-pokemon-evolution-image" src="././img/pokeball-icon.png">
-                    <div id="current-pokemon-evolution-level-1"class="current-pokemon-evolution-level-container font-size-12 bold">Lv. 36</div>
-                    <img id="current-pokemon-evolution-2" class="current-pokemon-evolution-image" src="././img/pokeball-icon.png">
+                    <img id="current-pokemon-evolution-0" class="current-pokemon-evolution-image"
+                        src="./img/pokeball-icon.png">
+                    <div id="current-pokemon-evolution-level-0"
+                        class="current-pokemon-evolution-level-container font-size-12 bold">Lv. 16</div>
+                    <img id="current-pokemon-evolution-1" class="current-pokemon-evolution-image"
+                        src="./img/pokeball-icon.png">
+                    <div id="current-pokemon-evolution-level-1"
+                        class="current-pokemon-evolution-level-container font-size-12 bold">Lv. 36</div>
+                    <img id="current-pokemon-evolution-2" class="current-pokemon-evolution-image"
+                        src="./img/pokeball-icon.png">
                 </div>
             </div>
         </div>
 
-        <div id="current-pokemon-empty">
-            <span class="font-size-18">Select a Pokemon<br>to display here.</span>
-        </div>
+
     </div>
 
-    <div id="back-to-top-button" class="hide" onclick="backToTop()">
-        <img src="./img/arrow-up-icon.png">
+    <div id="back-to-top-button" class="hide">
+        <img src="./img/arrow-up.svg">
     </div>
 
     <img id="current-pokemon-loading" src="./img/pokeball-icon.png" class="loading-ball">
-
 </body>
+
 </html>

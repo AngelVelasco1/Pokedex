@@ -1,3 +1,4 @@
+    const closeInfoMobile = document.querySelector("#current-pokemon-responsive-close")
     function openInfo(id) {
     
         if(window.innerWidth > 1100){
@@ -57,14 +58,14 @@
     function setupPokemonAbout(pokemon, id, species) {
         document.getElementById('current-pokemon-info').classList.remove('hide');
         document.getElementById('current-pokemon-id').innerHTML = 'N° ' + pokemon.id;
-        document.getElementById('current-pokemon-name').innerHTML = dressUpPayloadValue(pokemon.name);
+        document.getElementById('current-pokemon-name').innerHTML = pokemon.name;
         document.getElementById('current-pokemon-types').innerHTML = getTypeContainers(pokemons[id - 1].types);
         document.getElementById('current-pokemon-height').innerHTML = pokemon.height / 10 + 'm';
         document.getElementById('current-pokemon-weight').innerHTML = pokemon.weight / 10 + 'kg';
     
         for(i = 0; i < species.flavor_text_entries.length; i++) {
             if(species.flavor_text_entries[i].language.name == 'en'){
-                document.getElementById('current-pokemon-description').innerHTML = dressUpPayloadValue(species.flavor_text_entries[i].flavor_text.replace('', ' '));
+                document.getElementById('current-pokemon-description').innerHTML = species.flavor_text_entries[i].flavor_text.replace('', ' ');
                 break;
             };
         };
@@ -82,10 +83,10 @@
     
     /**setup pokemon abilities */
     function setupPokemonAbilities(pokemon) {
-        document.getElementById('current-pokemon-abilitiy-0').innerHTML = dressUpPayloadValue(pokemon.abilities[0].ability.name);
+        document.getElementById('current-pokemon-abilitiy-0').innerHTML = pokemon.abilities[0].ability.name;
         if(pokemon.abilities[1]){
             document.getElementById('current-pokemon-abilitiy-1').classList.remove('hide');
-            document.getElementById('current-pokemon-abilitiy-1').innerHTML = dressUpPayloadValue(pokemon.abilities[1].ability.name);
+            document.getElementById('current-pokemon-abilitiy-1').innerHTML = pokemon.abilities[1].ability.name;
         } else {
             document.getElementById('current-pokemon-abilitiy-1').classList.add('hide');
         };//
@@ -159,7 +160,7 @@
         document.getElementsByTagName('html')[0].style.overflow = 'hidden';
     };
     
-    function closePokemonInfo(){
+    closeInfoMobile.addEventListener("click", () => {
         setTimeout(function(){
             document.getElementById('current-pokemon-container').classList.add('hide');
             document.getElementById('current-pokemon-responsive-close').classList.add('hide');
@@ -175,7 +176,8 @@
         document.getElementsByTagName('html')[0].style.overflow = 'unset';
     
         slideOutPokemonInfo();
-    };
+    })
+   
     
     window.addEventListener('resize', function(){
         if(document.getElementById('current-pokemon-container').classList.contains('slide-out')){
