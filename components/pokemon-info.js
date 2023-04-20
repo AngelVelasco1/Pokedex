@@ -1,5 +1,4 @@
     function openInfo(id) {
-        document.getElementById('current-pokemon-empty').classList.add('hide');
     
         if(window.innerWidth > 1100){
             slideOutPokemonInfo();
@@ -79,7 +78,6 @@
         document.getElementById('current-pokemon-stats-spa').innerHTML = pokemon.stats[3].base_stat;
         document.getElementById('current-pokemon-stats-spd').innerHTML = pokemon.stats[4].base_stat;
         document.getElementById('current-pokemon-stats-speed').innerHTML = pokemon.stats[5].base_stat;
-        document.getElementById('current-pokemon-stats-total').innerHTML = pokemon.stats[0].base_stat + pokemon.stats[1].base_stat + pokemon.stats[2].base_stat + pokemon.stats[3].base_stat + pokemon.stats[4].base_stat + pokemon.stats[5].base_stat;
     };
     
     /**setup pokemon abilities */

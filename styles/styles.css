@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap');
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Poppins', sans-serif!important;
 }
 
 html {
@@ -16,13 +16,11 @@ html {
 body {
     background: #F6F8FC;
     padding: 0 10vw;
-    font-family: 'Outfit', sans-serif;
     display: flex;
     justify-content: center;
-    background-image: url(src/pokeball-icon.png);
+    background-image: url(../img/pokeball-icon.png);
     background-repeat: no-repeat;
-    background-position-x: -180px;
-    background-position-y: -80px;
+
     width: 100%
 }
 
@@ -202,7 +200,7 @@ input {
 #current-pokemon-container {
     width: 320px;
     margin: 10px;
-    height: 82vh;
+    height: 80vh;
     position: fixed;
     right: calc(10vw - 20px);
     padding: 0 15px;
@@ -221,9 +219,6 @@ input {
     overflow-y: scroll; 
 }
 
-#current-pokemon-info::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
-}
 
 #current-pokemon-image {
     position: absolute;
@@ -353,7 +348,6 @@ input {
 
 
 
-/*Responsive*/
 
 #current-pokemon-responsive-background {
     height: 100%;
@@ -376,6 +370,7 @@ input {
     display: none ;
     height: 22px;
     transition: 0.35s;
+    cursor: pointer;
 }
 
 #current-pokemon-responsive-close:hover {

@@ -1,8 +1,8 @@
 let pokemons = [' '];
 
 async function getAllNames() {
-    let url = 'https://pokeapi.co/api/v2/pokemon/?limit=898';
-    let response = await fetch(url);
+    let urlAPI = "https://pokeapi.co/api/v2/pokemon/?limit=1000";
+    let response = await fetch(urlAPI);
     let responseAsJson = await response.json();
 
     for (let i = 0; i < responseAsJson.results.length; i++) {
@@ -12,15 +12,13 @@ async function getAllNames() {
             types: []
         });
     };
-
     getAllTypes();
 };
 
-/**fetch pokemon types */
 async function getAllTypes() {
     for (let i = 0; i < 18; i++) {
-        let url = 'https://pokeapi.co/api/v2/type/' + (i + 1)
-        let response = await fetch(url)
+        let urlAPI = 'https://pokeapi.co/api/v2/type/' + (i + 1)
+        let response = await fetch(urlAPI)
         let responseAsJson = await response.json()
 
         const pokemonInType = responseAsJson.pokemon
@@ -37,7 +35,6 @@ async function getAllTypes() {
     loadingCompletion();
 };
 
-/**hide loading div after completion */
 function loadingCompletion() {
     let loadingDiv = document.getElementById('loading-div');
     loadingDiv.classList.add('hideLoading');

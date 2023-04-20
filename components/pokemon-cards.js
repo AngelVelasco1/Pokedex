@@ -76,29 +76,6 @@ let currentlyShowingAmount = 0;
             return htmlToReturn + '</div>';
         };
 
-        /**on search input keydown*/
-        function search() {
-            setTimeout(function () {
-                let searchResults = [];
-
-                for (let i = 0; i < pokemons.length; i++) {
-                    if (pokemons[i].name) {
-                        if (pokemons[i].name.replaceAll('-', ' ').includes(document.getElementById('search-input').value.toLowerCase())) {
-                            searchResults.push(pokemons[i]);
-                        };
-                    };
-                };
-
-                document.getElementById('pokedex-list-render-container').innerHTML = '';
-
-                currentList = searchResults;
-                currentlyShowingAmount = 0;
-                maxIndex = 0;
-
-                increaseMaxIndex(30);
-                updatePokemonList();
-            }, 1);
-        };
 
 
         /** Scroll */
