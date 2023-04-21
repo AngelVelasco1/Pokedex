@@ -212,13 +212,12 @@
       position: absolute;
       right: 0;
       left: 0;
-      bottom: 77vh;
+      bottom: 76vh;
       margin-right: auto;
       margin-left: auto;
       object-fit: contain;
       image-rendering: pixelated;
-      max-width: 350px;
-      max-height: 22vh;
+      max-height: 160px;
   }
 
   #current-pokemon-loading {

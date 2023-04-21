@@ -40,45 +40,56 @@ async function dataPokemonInfo(id) {
 };
 
 function updateCurrentImg(id) {
-
-    const currentPokemonImage = document.getElementById('current-pokemon-image');
+    const currentImage = document.getElementById('current-pokemon-image');
     const img = new Image();
 
     img.onload = function () {
-        currentPokemonImage.src = this.src;
-        currentPokemonImage.style.height = this.height * 3 + 'px';
+        currentImage.src = this.src;
+        currentImage.style.height = "160px";
     };
 
     if (id >= 650) {
-        img.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/' + id + '.png';
-    } else {
-        img.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/' + id + '.gif';
+        img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/${id}.png`;
+    } 
+    else {
+        img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`;
     };
 };
 
 function setupPokemonAbout(pokemon, id, species) {
-    document.getElementById('current-pokemon-info').classList.remove('hide');
-    document.getElementById('current-pokemon-id').innerHTML = 'N° ' + pokemon.id;
-    document.getElementById('current-pokemon-name').innerHTML = pokemon.name;
-    document.getElementById('current-pokemon-types').innerHTML = getTypeContainers(pokemons[id - 1].types);
-    document.getElementById('current-pokemon-height').innerHTML = pokemon.height / 10 + 'm';
-    document.getElementById('current-pokemon-weight').innerHTML = pokemon.weight / 10 + 'kg';
+    const pokemonInfo =  document.getElementById('current-pokemon-info');
+    const pokemonId =  document.getElementById('current-pokemon-id');
+    const pokemonName = document.getElementById('current-pokemon-name');
+    const pokemonType = document.getElementById('current-pokemon-types');
+    const pokemonHeight = document.getElementById('current-pokemon-height');
+    const pokemonWeight = document.getElementById('current-pokemon-weight');
+    const pokemonDescription = document.getElementById('current-pokemon-description')
 
-    for (i = 0; i < species.flavor_text_entries.length; i++) {
-        if (species.flavor_text_entries[i].language.name == 'en') {
-            document.getElementById('current-pokemon-description').innerHTML = species.flavor_text_entries[i].flavor_text.replace('', ' ');
-            break;
-        };
-    };
+    pokemonInfo.classList.remove('hide');
+    pokemonId.innerText = `N° ${pokemon.id}`;
+    pokemonName.innerText = pokemon.name;
+    pokemonType.innerHTML = getTypeContainers(pokemons[id -1].types);
+    pokemonHeight.innerText = `${pokemon.height / 10} m`
+    pokemonWeight.innerText = `${pokemon.weight / 10} kg`
+
+    const description = species.flavor_text_entries.find(entry => entry.language.name === "en");
+    pokemonDescription.textContent = description.flavor_text.replace('', ' ');
 };
 
 function setupPokemonStats(pokemon) {
-    document.getElementById('current-pokemon-stats-atk').innerHTML = pokemon.stats[0].base_stat;
-    document.getElementById('current-pokemon-stats-hp').innerHTML = pokemon.stats[1].base_stat;
-    document.getElementById('current-pokemon-stats-def').innerHTML = pokemon.stats[2].base_stat;
-    document.getElementById('current-pokemon-stats-spa').innerHTML = pokemon.stats[3].base_stat;
-    document.getElementById('current-pokemon-stats-spd').innerHTML = pokemon.stats[4].base_stat;
-    document.getElementById('current-pokemon-stats-speed').innerHTML = pokemon.stats[5].base_stat;
+    const atk = document.getElementById('current-pokemon-stats-atk');
+    const hp =  document.getElementById('current-pokemon-stats-hp')
+    const def = document.getElementById('current-pokemon-stats-def');
+    const spa = document.getElementById('current-pokemon-stats-spa')
+    const spd =  document.getElementById('current-pokemon-stats-spd');
+    const sp =  document.getElementById('current-pokemon-stats-speed');
+
+    atk.innerText = pokemon.stats[0].base_stat;
+    hp.innerText = pokemon.stats[1].base_stat;
+    def.innerText = pokemon.stats[2].base_stat;
+    spa.innerText = pokemon.stats[3].base_stat;
+    spd.innerText = pokemon.stats[4].base_stat;
+    sp.innerText = pokemon.stats[5].base_stat;
 };
 
 function setupPokemonAbilities(pokemon) {
@@ -185,8 +196,6 @@ window.addEventListener('resize', function () {
         document.getElementsByTagName('html')[0].style.overflow = 'unset';
     };
 });
-
-
 
 
 function slideOutPokemonInfo() {

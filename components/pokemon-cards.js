@@ -1,6 +1,4 @@
 
-/* DOM */
-const toTopButton = document.querySelector("#back-to-top-button");
 /* Variables */
 let actualShowPokemons = 0;
 let maxIndex = 20;
@@ -65,43 +63,28 @@ function showNextPokemons(to) {
 };
 
 function getTypeContainers(types) {
-    let htmlToReturn = '<div class="row">';
+    let htmlToReturn = types.map(type => `
+    <div class="type-container" style="background: ${typeColors[type]};display:inline-block">   
+       ${type}
+    </div>
 
-    for (let i = 0; i < types.length; i++) {
-        htmlToReturn += `
-        <div class="type-container" style="background: ${typeColors[types[i]]};">
-            ${types[i]}
-        </div>
-        `;
-    };
-    return htmlToReturn;   
+    `).join('');
+    return htmlToReturn;
 };
 
+const windowHeight = window.innerHeight;
+const toTopButton = document.querySelector("#back-to-top-button");
 
-
-window.addEventListener('scroll', () => {
-    addNewScrollPokemon();
-    toTopButtonVisibility();
-});
-
-function addNewScrollPokemon() {
-    if (window.scrollY + 100 >= document.documentElement.scrollHeight - document.documentElement.clientHeight) {
+const onScroll = () => {
+    if(window.scrollY + 100 >= document.documentElement.scrollHeight - document.documentElement.clientHeight) {
         showNextPokemons(33);
         updatePokemonList();
-    };
+    }
+   
+    toTopButton.classList.remove('hide', window.scrollY > windowHeight)
 };
 
-function toTopButtonVisibility() {
-    if (window.scrollY > window.innerHeight) {
-        document.getElementById('back-to-top-button').classList.remove('hide');
-    } else {
-        document.getElementById('back-to-top-button').classList.add('hide');
-    };
-};
-
-/* Listeners */
+window.addEventListener('scroll', onScroll)
 toTopButton.addEventListener('click', () => {
     window.scrollTo(0, 0);
-
-})
-
+});
