@@ -3,7 +3,7 @@
 let actualShowPokemons = 0;
 let maxIndex = 20;
 let currentList = [];
-let pokedexList =  document.getElementById('pokedex-list-render-container');
+let pokedexList = document.getElementById('pokedex-list-render-container');
 
 const typeColors = {
     'normal': '#BCBCAC',
@@ -35,7 +35,7 @@ function updatePokemonList() {
 
 function renderPokemons(index) {
     if (currentList[index]) {
-       pokedexList.insertAdjacentHTML('beforeend', `
+        pokedexList.insertAdjacentHTML('beforeend', `
                 <div onclick="openInfo(${currentList[index].id})" class="pokemon-render-result-container container center column">
                                                                                                             
                 <img class="search-pokemon-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentList[index].id}.png">
@@ -81,7 +81,7 @@ searchInput.addEventListener('keyup', () => {
     for (let index = 0; index < pokemons.length; index++) {
         (pokemons[index].name.replaceAll('-', ' ').includes(searchValue)) ? searchResults.push(pokemons[index]) : "none"
     }
-    
+
     pokedexList.innerHTML = ' ';
 
     currentList = searchResults;
@@ -90,19 +90,29 @@ searchInput.addEventListener('keyup', () => {
 
     showNextPokemons(30);
     updatePokemonList();
-}) 
+})
 
+let music = document.getElementById('music');
+let toggle = document.getElementById('switch');
 
+toggle.addEventListener('change', (e) => {
+    if(e.target.checked) {
+        music.play();
+    }
+    else {
+        music.pause();
+    }
+})
 
 const windowHeight = window.innerHeight;
 const toTopButton = document.querySelector("#back-to-top-button");
 
 const onScroll = () => {
-    if(window.scrollY + 100 >= document.documentElement.scrollHeight - document.documentElement.clientHeight) {
+    if (window.scrollY + 100 >= document.documentElement.scrollHeight - document.documentElement.clientHeight) {
         showNextPokemons(33);
         updatePokemonList();
     }
-   
+
     toTopButton.classList.remove('hide', window.scrollY > windowHeight)
 };
 
