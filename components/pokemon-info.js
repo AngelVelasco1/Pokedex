@@ -75,15 +75,15 @@ function setupPokemonAbout(pokemon, id, species) {
 };
 
 function setupPokemonStats(pokemon) {
-    const atk = document.getElementById('current-pokemon-stats-atk');
     const hp = document.getElementById('current-pokemon-stats-hp')
+    const atk = document.getElementById('current-pokemon-stats-atk');
     const def = document.getElementById('current-pokemon-stats-def');
     const spa = document.getElementById('current-pokemon-stats-spa')
     const spd = document.getElementById('current-pokemon-stats-spd');
     const sp = document.getElementById('current-pokemon-stats-speed');
 
-    atk.innerText = pokemon.stats[0].base_stat;
-    hp.innerText = pokemon.stats[1].base_stat;
+    hp.innerText = pokemon.stats[0].base_stat;
+    atk.innerText = pokemon.stats[1].base_stat;
     def.innerText = pokemon.stats[2].base_stat;
     spa.innerText = pokemon.stats[3].base_stat;
     spd.innerText = pokemon.stats[4].base_stat;
