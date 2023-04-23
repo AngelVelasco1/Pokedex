@@ -1,7 +1,7 @@
 let pokemons = [' '];
 
 window.addEventListener("DOMContentLoaded", async () => {
-    let urlAPI = "https://pokeapi.co/api/v2/pokemon/?limit=1200";
+    let urlAPI = "https://pokeapi.co/api/v2/pokemon/?limit=900";
     let response = await fetch(urlAPI);
     let responseAsJson = await response.json();
 

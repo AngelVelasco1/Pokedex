@@ -20,7 +20,7 @@
       justify-content: center;
       background-image: url(../img/pokeball-icon.png);
       background-repeat: no-repeat;
-      background-size:auto;
+      background-size: auto;
       width: 100%
   }
 
@@ -116,9 +116,40 @@
       }
   }
 
+  /* Search */
+  #search-bar {
+      margin: 20px 10px;
+  }
+  #search-input {
+    border: none;
+    outline: none;
+    font-size: 18px;
+    width: 100%;
+  }
+  #search-icon {
+    display: flex;
+    background-color: #5085ff;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: #0031d0 0px 0px 10px;
+    color: white;
+    font-size: 18px;
+    transition: all 0.5s ease-in-out;
+  }
+  #search-icon img {
+    width: 24px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  #search-icon:hover {
+    transform: scale(1.05)
+  }
+
   /*List Container*/
   #pokedex-list {
-      margin-top: 80px;
+      margin-top: 40px;
       margin-right: 380px;
       width: 100%;
   }
@@ -204,7 +235,7 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      overflow-y: scroll;
+      overflow: auto;
   }
 
 

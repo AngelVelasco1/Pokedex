@@ -46,11 +46,11 @@ function updateCurrentImg(id) {
         currentImage.style.height = "160px";
     };
 
-    if (id >= 650) {
-        img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/${id}.png`;
+    if (id <= 650) {
+        img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`;
     }
     else {
-        img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`;
+        img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/${id}.png`;
     };
 };
 
@@ -147,12 +147,15 @@ function setupEvolution(chain, no) {
     const toPokemonId = filterIdFromSpeciesURL(chain.evolves_to[0].species.url);
 
     chainImages[no].src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${fromPokemonId}.png`;
-    chainImages[no].addEventListener('click', () => openInfo(fromPokemonId));
-
+    chainImages[no].setAttribute('onClick', 'javascript: ' + 'openInfo(' + fromPokemonId + ')');
     chainImages[no + 1].src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${toPokemonId}.png`;
-    chainImages[no + 1].addEventListener('click', () => openInfo(toPokemonId));
+    chainImages[no + 1].setAttribute('onClick', 'javascript: ' + 'openInfo(' + toPokemonId + ')');
 
-    chainLevels[no].innerHTML = chain.evolves_to[0].evolution_details[0].min_level ? `Lv. ${chain.evolves_to[0].evolution_details[0].min_level}` : '?';
+    if (chain.evolves_to[0].evolution_details[0].min_level) {
+        chainLevels[no].innerHTML = 'Lv. ' + chain.evolves_to[0].evolution_details[0].min_level;
+    } else {
+        chainLevels[no].innerHTML = '?';
+    };
 
 };
 
@@ -169,7 +172,7 @@ function openPokemonResponsiveInfo() {
     const defaultPokemonContainer = document.getElementById('current-pokemon-container');
     const resposiveBackground = document.getElementById('current-pokemon-responsive-background')
     const closeButton = document.getElementById('current-pokemon-responsive-close');
-    
+
     defaultPokemonContainer.classList.remove('hide');
     defaultPokemonContainer.style.display = 'flex';
     resposiveBackground.classList.remove('hide');
@@ -179,7 +182,7 @@ function openPokemonResponsiveInfo() {
         resposiveBackground.style.opacity = 1;
     }, 20);
 
-    document.getElementsByTagName('html')[0].style.overflow = 'auto';
+    document.getElementsByTagName('html')[0].style.overflow = 'hidden';
 };
 
 const closeInfoMobile = document.querySelector("#current-pokemon-responsive-close")

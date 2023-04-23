@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+    <title>PokeDex</title>
     <script src="main.js" type="module" defer></script>
     <script src="./components/data-API.js" defer></script>
     <script src="./components/pokemon-cards.js" defer></script>
@@ -13,12 +15,19 @@
 </head>
 
 <body  class="row">
-
     <div id="loading-div">
         <img src="./img/pokeball-icon.png" class="loading-ball">
     </div>
 
     <div id="pokedex-list" class="column">
+        
+    <div id="search-bar" class="row container margin-40">
+        <input type="text" id="search-input" placeholder="Find your pokemon ⚈ ․̫ ⚈">
+        <div id="search-icon">
+           <img src="./img/search.svg" alt="">   
+        </div>
+    </div>
+
         <div id="pokedex-list-render-container">
 
         </div>

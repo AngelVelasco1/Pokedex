@@ -3,6 +3,7 @@
 let actualShowPokemons = 0;
 let maxIndex = 20;
 let currentList = [];
+let pokedexList =  document.getElementById('pokedex-list-render-container');
 
 const typeColors = {
     'normal': '#BCBCAC',
@@ -34,7 +35,7 @@ function updatePokemonList() {
 
 function renderPokemons(index) {
     if (currentList[index]) {
-        document.getElementById('pokedex-list-render-container').insertAdjacentHTML('beforeend', `
+       pokedexList.insertAdjacentHTML('beforeend', `
                 <div onclick="openInfo(${currentList[index].id})" class="pokemon-render-result-container container center column">
                                                                                                             
                 <img class="search-pokemon-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentList[index].id}.png">
@@ -71,6 +72,31 @@ function getTypeContainers(types) {
     `).join('');
     return htmlToReturn;
 };
+const searchInput = document.getElementById('search-input');
+
+searchInput.addEventListener('keyup', () => {
+    let searchResults = [];
+    let searchValue = searchInput.value.toLowerCase();
+
+    for (let index = 0; index < pokemons.length; index++) {
+        if(pokemons[index].name) {
+            if (pokemons[index].name.replaceAll('-', ' ').includes(searchValue)) {
+                searchResults.push(pokemons[index])
+            }
+        }
+         
+    }
+    pokedexList.innerHTML = '';
+
+    currentList = searchResults;
+    actualShowPokemons = 0;
+    maxIndex = 0;
+
+    showNextPokemons(30);
+    updatePokemonList();
+}) 
+
+
 
 const windowHeight = window.innerHeight;
 const toTopButton = document.querySelector("#back-to-top-button");
