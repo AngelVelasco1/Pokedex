@@ -188,7 +188,7 @@
   #current-pokemon-container {
       width: 320px;
       margin: 10px;
-      height: 80vh;
+      height: 79vh;
       position: fixed;
       right: calc(10vw - 20px);
       padding: 0 20px;
@@ -212,7 +212,7 @@
       position: absolute;
       right: 0;
       left: 0;
-      bottom: 76vh;
+      bottom: 75vh;
       margin-right: auto;
       margin-left: auto;
       object-fit: contain;
