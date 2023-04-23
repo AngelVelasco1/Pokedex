@@ -79,14 +79,10 @@ searchInput.addEventListener('keyup', () => {
     let searchValue = searchInput.value.toLowerCase();
 
     for (let index = 0; index < pokemons.length; index++) {
-        if(pokemons[index].name) {
-            if (pokemons[index].name.replaceAll('-', ' ').includes(searchValue)) {
-                searchResults.push(pokemons[index])
-            }
-        }
-         
+        (pokemons[index].name.replaceAll('-', ' ').includes(searchValue)) ? searchResults.push(pokemons[index]) : "none"
     }
-    pokedexList.innerHTML = '';
+    
+    pokedexList.innerHTML = ' ';
 
     currentList = searchResults;
     actualShowPokemons = 0;
