@@ -1,4 +1,3 @@
-
 /* Variables */
 let actualShowPokemons = 0;
 let maxIndex = 20;
@@ -72,6 +71,7 @@ function getTypeContainers(types) {
     `).join('');
     return htmlToReturn;
 };
+
 const searchInput = document.getElementById('search-input');
 
 searchInput.addEventListener('keyup', () => {
@@ -90,7 +90,7 @@ searchInput.addEventListener('keyup', () => {
 
     showNextPokemons(30);
     updatePokemonList();
-})
+});
 
 let music = document.getElementById('music');
 let toggle = document.getElementById('switch');
