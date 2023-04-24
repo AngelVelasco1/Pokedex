@@ -79,7 +79,7 @@ searchInput.addEventListener('keyup', () => {
     let searchValue = searchInput.value.toLowerCase();
 
     for (let index = 0; index < pokemons.length; index++) {
-        (pokemons[index].name.replaceAll('-', ' ').includes(searchValue)) ? searchResults.push(pokemons[index]) : "none"
+        (pokemons[index].name.trim().includes(searchValue)) ? searchResults.push(pokemons[index]) : "none"
     }
 
     pokedexList.innerHTML = ' ';
@@ -116,7 +116,8 @@ const onScroll = () => {
     toTopButton.classList.remove('hide', window.scrollY > windowHeight)
 };
 
-window.addEventListener('scroll', onScroll)
+window.addEventListener('scroll', onScroll);
+
 toTopButton.addEventListener('click', () => {
     window.scrollTo(0, 0);
 });
