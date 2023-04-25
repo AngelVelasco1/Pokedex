@@ -1,55 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styles.css">
     <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
-    <title>PokeDex</title>
-    <script src="main.js" type="module" defer></script>
-    <audio id="music"  loop >
+    <audio id="music" loop>
         <source src="./img/song.mp3" type="audio/mp3">
     </audio>
+    <title>PokeDex</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="main.js" type="module" defer></script>
 </head>
 
-<body  class="row">
-  
+<body class="row">
+    <!-- Start loading -->
     <div id="loading-div">
         <img src="./img/pokeball-icon.png" class="loading-ball">
     </div>
+    <!-- Principal pokemon cards -->
     <div id="pokedex-list" class="column">
-  
+        <!-- Music -->
         <label id="switch">
             <input type="checkbox">
             <span class="slider"></span>
-          </label>
-    <div id="search-bar" class="row container margin-40">
-       
-        <input type="text" id="search-input" placeholder="Find your pokemon ⚈ ․̫ ⚈">
-        <div id="search-icon">
-           <img src="./img/search.svg" alt="">   
+        </label>
+        <!-- Search Engine -->
+        <div id="search-bar" class="row container margin-40">
+            <input type="text" id="search-input" placeholder="Find your pokemon ⚈ ․̫ ⚈">
+            <div id="search-icon">
+                <img src="./img/search.svg" alt="">
+            </div>
         </div>
-    </div>
 
         <div id="pokedex-list-render-container">
         </div>
     </div>
-
-    <div id="current-pokemon-responsive-background" class="hide"></div>
-
-    <div id="current-pokemon-responsive-close" class="hide">
-        <img src="./img/close-icon.svg">
-    </div>
-
+    <!-- Show More pokemon info (Lateral info) -->
     <div id="current-pokemon-container" class="container column center">
-      
+
         <img id="current-pokemon-image" src="./img/no-pokemon-selected.png">
 
         <!--Info-->
         <div id="current-pokemon-info" class="hide">
-            
+
             <!--Id-->
             <span id="current-pokemon-id" class="font-size-12 bold">#213</span>
 
@@ -143,15 +137,17 @@
                 </div>
             </div>
         </div>
-      
+
 
     </div>
-   
+    <!-- Responsive view -->
+    <div id="current-pokemon-responsive-background" class="hide"></div>
+    <div id="current-pokemon-responsive-close" class="hide">
+        <img src="./img/close-icon.svg">
+    </div>
+    <!-- To top button -->
     <div id="back-to-top-button" class="hide">
         <img src="./img/arrow-up.svg">
     </div>
- 
-    <img id="current-pokemon-loading" src="./img/pokeball-icon.png" class="loading-ball">
 </body>
-
 </html>
