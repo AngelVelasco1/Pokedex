@@ -6,7 +6,7 @@ self.addEventListener('message', async () => {
 
     for (let i = 0; i < responseAsJson.results.length; i++) {
         pokemons.push({
-            id: i ,
+            id: i + 1,
             name: responseAsJson.results[i].name,
             types: []
         });
