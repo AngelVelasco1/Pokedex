@@ -97,7 +97,7 @@ export default {
                 }
                 toTopButton.classList.remove('hide', window.scrollY > windowHeight)
             };
-            
+
             window.addEventListener('scroll', onScroll);
             
             function getTypeContainers(types) {
@@ -124,7 +124,8 @@ export default {
                     updateCurrentImg(id);
                 };
             };
-
+            
+            /* Call all Data API */
             async function dataPokemonInfo(id) {
                 /* Obtain the information */
                 const responsePokemons = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -149,6 +150,7 @@ export default {
                 };
             };
 
+            /* Show lateral gifs */
             function updateCurrentImg(id) {
                 const currentImage = document.getElementById('current-pokemon-image');
                 const img = new Image();
@@ -166,6 +168,7 @@ export default {
                 };
             };
 
+            /* Stats - All Descripcions */
             function setupPokemonAbout(pokemon, id, species) {
                 const pokemonInfo = document.getElementById('current-pokemon-info');
                 const pokemonId = document.getElementById('current-pokemon-id');
@@ -185,7 +188,6 @@ export default {
                 const description = species.flavor_text_entries.find(entry => entry.language.name === "en");
                 pokemonDescription.textContent = description.flavor_text.replace('', ' ');
             };
-
             function setupPokemonStats(pokemon) {
                 const hp = document.getElementById('current-pokemon-stats-hp')
                 const atk = document.getElementById('current-pokemon-stats-atk');
@@ -201,7 +203,6 @@ export default {
                 spd.innerText = pokemon.stats[4].base_stat;
                 sp.innerText = pokemon.stats[5].base_stat;
             };
-
             function setupPokemonAbilities(pokemon) {
                 let abilitie0Container = document.getElementById('current-pokemon-abilitiy-0');
                 let abilitie1Container = document.getElementById('current-pokemon-abilitiy-1');
@@ -218,13 +219,12 @@ export default {
                 }
             };
 
+            /* Evolutions */
             function setupEvolutionChain(evolutionChain) {
                 const chain = evolutionChain.chain
                 const chainContainer = document.getElementById('current-pokemon-evolution-chain-container')
                 const chainImages = [document.getElementById('current-pokemon-evolution-0'), document.getElementById('current-pokemon-evolution-1'), document.getElementById('current-pokemon-evolution-2')]
                 const chainLevels = [document.getElementById('current-pokemon-evolution-level-0'), document.getElementById('current-pokemon-evolution-level-1')]
-
-
 
                 if (chain.evolves_to.length) {
                     chainContainer.classList.remove('hide');
@@ -279,7 +279,7 @@ export default {
             function filterIdFromSpeciesURL(url) {
                 return url.replace('https://pokeapi.co/api/v2/pokemon-species/', '').replace('/', '');
             };
-
+            /* Responsive View */
             function setupResponsiveBackground(pokemon) {
                 const resposiveBackground = document.getElementById('current-pokemon-responsive-background');
                 resposiveBackground.style.background = typeColors[pokemon.types[0].type.name];
@@ -301,7 +301,6 @@ export default {
 
                 document.getElementsByTagName('html')[0].style.overflow = 'hidden';
             };
-
             const closeInfoMobile = document.querySelector("#current-pokemon-responsive-close")
             closeInfoMobile.addEventListener("click", () => {
                 setTimeout(function () {
@@ -321,8 +320,7 @@ export default {
                 slideOutPokemonInfo();
             })
 
-
-
+            /* Main loading */
             function loadingCompletion() {
                 let loadingDiv = document.getElementById('loading-div');
                 loadingDiv.classList.add('hideLoading');
@@ -331,9 +329,6 @@ export default {
                 currentList = pokemons.slice();
                 updatePokemonList();
             };
-
-            updatePokemonList();
-            loadingCompletion();
 
             /* To top button */
             toTopButton.addEventListener('click', () => {
@@ -348,6 +343,9 @@ export default {
                 document.getElementById('current-pokemon-container').classList.add('slide-in');
                 document.getElementById('current-pokemon-container').classList.remove('slide-out');
             };
+            /* Call important funtions */
+            updatePokemonList();
+            loadingCompletion();
         })
         wk.postMessage('start');
     }
