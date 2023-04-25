@@ -1,7 +1,7 @@
 
 export default {
     showCards() {
-        let wk = new Worker("../storage/wkPokemon-cards.js");
+        let wk = new Worker("./storage/wkPokemon-cards.js");
 
         wk.addEventListener("message", (e) => {
         let pokemons = [' '];
