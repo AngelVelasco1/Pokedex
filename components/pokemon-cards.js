@@ -1,3 +1,4 @@
+
 export default {
     showCards() {
         let wk = new Worker("../storage/wkPokemon-cards.js");
